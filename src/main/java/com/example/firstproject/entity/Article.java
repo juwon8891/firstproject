@@ -1,6 +1,7 @@
 package com.example.firstproject.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor // 디폴트 생성자를 추가!
+@Getter
 @Entity // DB가 해당 객체를 인식 가능!
 public class Article {
     @Id // 대표값을 지정! like a 주민등록번호

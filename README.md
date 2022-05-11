@@ -1,6 +1,7 @@
 >이 프로젝트는 홍팍의 스프링부트 입문 강의 실습 코드입니다.
 
 <h3> 프로젝트는 다음과 같이 구성됩니다. </h3>
+------------------------------------------------
 * 스프링부트, 입문!
   * 개발 환경 구축
   * 웹 서비스 동작 원리
@@ -15,6 +16,6 @@
   * IoC와 DI(객체를 주입한다고?)
   * AOP, 관점 지향 프로그래밍(부가 기능을 주입한다고?)
   * ObjectMapper(JSON을 객체로 변환한다고?)
+------------------------------------------------  
   
-  
-<h4>https://www.youtube.com/playlist?list=PLyebPLlVYXCiYdYaWRKgCqvnCFrLEANXt</h4>
+<h6>https://www.youtube.com/playlist?list=PLyebPLlVYXCiYdYaWRKgCqvnCFrLEANXt</h6>

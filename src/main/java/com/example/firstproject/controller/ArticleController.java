@@ -80,4 +80,15 @@ public class ArticleController {
         // 3: 수정 결과를 페이지로 리다이렉트 한다!
         return "redirect:/articles/" + articleEntity.getId();
     }
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id, Model model){
+        // 1: 리퍼지토리에 아이디값 일치하면 가져오기
+        Article target = articleRepository.findById(id).orElse(null);
+        // 2: 일치하는 값이 있으면 delete
+        if(target != null){
+            articleRepository.delete(target);
+            log.info(id + "번 데이터가 삭제되었습니다.");
+        }
+        return "redirect:/articles/";
+    }
 }

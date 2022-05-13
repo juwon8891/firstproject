@@ -9,11 +9,11 @@ public class FirstController {
     @GetMapping("/hi")
     public String niceToMeetYou(Model model){
         model.addAttribute("username", "주원");
-        return "greetings"; //template/greeting 전송
+        return "templates/layouts/greetings"; //template/greeting 전송
     }
-    @GetMapping("bye")
+    @GetMapping("/bye")
     public String seeYouNext(Model model) {
         model.addAttribute("nickname","주원");
-        return "goodbye";
+        return "templates/layouts/goodbye";
     }
 }

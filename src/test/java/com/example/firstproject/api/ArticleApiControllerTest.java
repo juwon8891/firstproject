@@ -151,9 +151,4 @@ class ArticleApiControllerTest {
         // 비교
         assertEquals(expected, article);
     }
-
-    @Test
-    void transactionTest() {
-
-    }
 }

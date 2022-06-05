@@ -51,20 +51,20 @@ class CommentRepositoryTest {
         /* Case 3: 9번 게시글의 모든 댓글 조회 */
         {
             // 입력 데이터 준비
-            Long articleId = 1L;
+            Long articleId = 9L;
             // 실제 수행
             List<Comment> comments = commentRepository.findByArticleId(articleId);
             // 예상하기
             Article article = new Article(1L, "Seoul", "1111");
             List<Comment> expected = Arrays.asList();
             // 검증
-            assertEquals(expected.toString(), comments.toString(),
-                    "1번 글은 댓글이 없음!");
+            assertEquals(expected, comments,
+                    "9번 글은 댓글이 없음!");
         }
         /* Case 4: 9999번 게시글의 모든 댓글 조회 */
         {
             // 입력 데이터 준비
-            Long articleId = 1L;
+            Long articleId = 9999L;
             // 실제 수행
             List<Comment> comments = commentRepository.findByArticleId(articleId);
             // 예상하기
@@ -72,12 +72,12 @@ class CommentRepositoryTest {
             List<Comment> expected = Arrays.asList();
             // 검증
             assertEquals(expected.toString(), comments.toString(),
-                    "1번 글은 댓글이 없음!");
+                    "9999번 글은 댓글이 없음!");
         }
         /* Case 5: -1번 게시글의 모든 댓글 조회 */
         {
             // 입력 데이터 준비
-            Long articleId = 1L;
+            Long articleId = -1L;
             // 실제 수행
             List<Comment> comments = commentRepository.findByArticleId(articleId);
             // 예상하기
@@ -85,7 +85,7 @@ class CommentRepositoryTest {
             List<Comment> expected = Arrays.asList();
             // 검증
             assertEquals(expected.toString(), comments.toString(),
-                    "1번 글은 댓글이 없음!");
+                    "-1번 글은 댓글이 없음!");
         }
     }
 

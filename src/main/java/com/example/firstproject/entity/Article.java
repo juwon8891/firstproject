@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import javax.persistence.*;
-
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor // 디폴트 생성자를 추가!

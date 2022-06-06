@@ -1,7 +1,9 @@
 package com.example.firstproject.controller;
 import com.example.firstproject.dto.ArticleForm;
+import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.entity.Article;
 import com.example.firstproject.repository.ArticleRepository;
+import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +20,8 @@ import java.util.Optional;
 public class ArticleController {
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동 연결!
     private ArticleRepository articleRepository;
-
+    @Autowired
+    private CommentService commentService;
     @GetMapping("/articles/new")
     public String newArticleForm() {
         return "articles/new";
@@ -39,8 +42,10 @@ public class ArticleController {
         log.info("id = " + id);
         // 1. id로 데이터를 가져옴!
         Article articleEntity = articleRepository.findById(id).orElse(null);
+        List<CommentDto> commentsDtos = commentService.comments(id);
         // 2. 가져온 데이터를 모델에 등록!
         model.addAttribute("article", articleEntity);
+        model.addAttribute("commentsDtos", commentsDtos);
         // 3. 보여줄 페이지를 설정!
         return "articles/show";
     }
@@ -81,7 +86,7 @@ public class ArticleController {
         return "redirect:/articles/" + articleEntity.getId();
     }
     @GetMapping("/articles/{id}/delete")
-    public String delete(@PathVariable Long id, Model model){
+    public String delete(@PathVariable Long id){
         // 1: 리퍼지토리에 아이디값 일치하면 가져오기
         Article target = articleRepository.findById(id).orElse(null);
         // 2: 일치하는 값이 있으면 delete

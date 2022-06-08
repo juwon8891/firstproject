@@ -22,7 +22,7 @@ cache:
 before_deploy:
   - zip -r mycicdtest *
   - mkdir -p deploy
-  - mv mycicdtest.zip deploy/mycicdtest.zip
+  - mv mycicdtest.zip deploy/spring_deploy_test.zip
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo setting에 설정된 값

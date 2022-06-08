@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArticleApiControllerTest {
     @Autowired
     ArticleService articleService;
+    /*
     @Test
     void index() {
         // 예상
@@ -28,7 +29,7 @@ class ArticleApiControllerTest {
         List<Article> articles = articleService.index();
         // 비교
         assertEquals(excepted.toString(), articles.toString());
-    }
+    }*/
 
     @Test
     void show_success() { // 존재하는 아이디 입력
@@ -49,19 +50,6 @@ class ArticleApiControllerTest {
         Article article = articleService.show(id);
         // 비교
         assertEquals(expected, article);
-    }
-    @Transactional
-    @Test
-    void create_success() { // title과 content만 있는 dto 입력
-        // 예상
-        String title = "라라라라";
-        String content = "4444";
-        ArticleForm dto = new ArticleForm(null, title, content);
-        Article expected = new Article(4L, title, content);
-        // 실제
-        Article article = articleService.create(dto);
-        // 비교
-        assertEquals(expected.toString(), article.toString());
     }
     @Transactional
     @Test
@@ -90,7 +78,7 @@ class ArticleApiControllerTest {
         // 비교
         assertEquals(expected.toString(), article.toString());
     }
-
+    /*
     @Transactional
     @Test
     void update_fail_존재하지_않는_id의_dto_입력() {
@@ -104,7 +92,7 @@ class ArticleApiControllerTest {
         Article article = articleService.update(id, dto);
         // 비교
         assertEquals(expected, article);
-    }
+    }*/
 
     @Transactional
     @Test
@@ -136,7 +124,7 @@ class ArticleApiControllerTest {
         // 비교
         assertEquals(expected.toString(), article.toString());
     }
-
+    /*
     @Transactional
     @Test
     void delete_fail() {
@@ -150,5 +138,5 @@ class ArticleApiControllerTest {
         Article article = articleService.delete(id);
         // 비교
         assertEquals(expected, article);
-    }
+    }*/
 }

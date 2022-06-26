@@ -22,6 +22,9 @@ public class ArticleApiController {
     }
     @GetMapping("/api/articles/{id}")
     public Article show(@PathVariable Long id) {
+        String str_id = String.valueOf(id);
+        log.info(str_id);
+        log.info(String.valueOf(articleService.show(id)));
         return articleService.show(id);
     }
     // POST

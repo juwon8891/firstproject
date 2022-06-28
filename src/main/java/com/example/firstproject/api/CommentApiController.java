@@ -1,5 +1,6 @@
 package com.example.firstproject.api;
 
+import com.example.firstproject.annotation.RunningTime;
 import com.example.firstproject.dto.CommentDto;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.service.CommentService;
@@ -15,6 +16,7 @@ public class CommentApiController {
     @Autowired
     private CommentService commentService;
     // 댓글 목록 조회
+    @RunningTime
     @GetMapping("/api/articles/{articleId}/comments")
     public ResponseEntity<List<CommentDto>> comments(@PathVariable Long articleId) {
         // 서비스에게 위임
@@ -38,6 +40,7 @@ public class CommentApiController {
         CommentDto createdDto = commentService.update(id, dto);
         return ResponseEntity.status(HttpStatus.OK).body(createdDto);
     }
+    @RunningTime
     @DeleteMapping("/api/comments/{id}")
     public ResponseEntity<CommentDto> delete(@PathVariable Long id) {
         // 서비스에게 위임

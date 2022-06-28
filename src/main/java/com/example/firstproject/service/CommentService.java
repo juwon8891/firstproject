@@ -5,6 +5,9 @@ import com.example.firstproject.entity.Article;
 import com.example.firstproject.entity.Comment;
 import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.repository.CommentRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class CommentService {
     @Autowired
@@ -19,6 +23,7 @@ public class CommentService {
     @Autowired
     private ArticleRepository articleRepository;
     public List<CommentDto> comments(Long articleId) {
+
         // 조회: 댓글 목록
        List<Comment> comments = commentRepository.findByArticleId(articleId);
         // 변환: 엔티티 -> DTO
@@ -45,7 +50,9 @@ public class CommentService {
         // 댓글 엔티티를 DB로 저장
         Comment created = commentRepository.save(comment);
         // DTO로 변경하여 반환
-        return CommentDto.createCommentDto(created);
+       //return CommentDto.createCommentDto(created);
+        CommentDto createCommentDto = CommentDto.createCommentDto(created);
+        return createCommentDto;
     }
     @Transactional
     public CommentDto update(Long id, CommentDto dto) {
@@ -69,4 +76,5 @@ public class CommentService {
         // 삭제 댓글을 DTO로 반환
         return CommentDto.createCommentDto(target);
     }
+
 }
